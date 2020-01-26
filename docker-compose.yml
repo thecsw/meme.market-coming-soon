@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+    http:
+        build:
+            context: .
+            dockerfile: ./Dockerfile-caddy
+        env_file: .env
+        restart: "no"
+        ports:
+          - 2015:2015
+          - 80:80
+          - 443:443
+        volumes:
+          - "/data/mib/caddy/data:/root/.caddy"
+          - "/data/mib/caddy/logs:/var/log"
